@@ -8,6 +8,7 @@ import com.d30.aquamate.dao.PlanActivityResponse;
 import com.d30.aquamate.dao.WeatherResponse;
 import io.swagger.annotations.ApiOperation;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +27,7 @@ public class AquamateController {
 	public AquamateServiceClass asc;
 	
 	
-	
+	@CrossOrigin
 	@RequestMapping(value = "/WeatherAPI/", method = RequestMethod.GET)
 	@ResponseBody
 	@ApiOperation(value = "Get weather forecast and current weather", response = WeatherResponse.class)
@@ -35,7 +36,7 @@ public class AquamateController {
 		System.out.println("Service class called");
 		return asc.consumeWeatherAPI(lat,lon);
 	}
-	
+	@CrossOrigin
 	@RequestMapping(value = "/PlanActivity/", method = RequestMethod.POST)
 	@ResponseBody
 	@ApiOperation(value = "Get weather data for activity", response = WeatherResponse.class)
