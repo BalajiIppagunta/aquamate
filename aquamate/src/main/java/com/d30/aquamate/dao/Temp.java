@@ -86,7 +86,7 @@ public class Temp {
 	
 	@Override
 	public String toString() {
-		return "Temp [" + (morn != null ? "morn=" + morn + ", " : "") + (day != null ? "day=" + day + ", " : "")
+		return (morn != null ? "morn=" + morn + ", " : "") + (day != null ? "day=" + day + ", " : "")
 				+ (eve != null ? "eve=" + eve + ", " : "") + (night != null ? "night=" + night + ", " : "")
 				+ (min != null ? "min=" + min + ", " : "") + (max != null ? "max=" + max : "") + "]";
 	}
