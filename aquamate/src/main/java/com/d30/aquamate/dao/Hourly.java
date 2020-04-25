@@ -7,19 +7,92 @@ import org.springframework.stereotype.Component;
 @Component
 public class Hourly {
 	
-	public String dt; // Time of the forecasted data, unix, UTC
-	public String temp; // Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. How to change units format
-	public String feels_like; // Temperature. This temperature parameter accounts for the human perception of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-	public String pressure; // Atmospheric pressure on the sea level, hPa
-	public String humidity; // Humidity, %
-	public String dew_point; // Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-	public String clouds; // Cloudiness, %
-	public String visibility; // Average visibility, meters
-	public String wind_speed; // Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.How to change units format
-	public String wind_gust; // Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. How to change units format
-	public String wind_deg; // Wind direction, degrees (meteorological)
+	private String dt; // Time of the forecasted data, unix, UTC
+	private String temp; // Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit. How to change units format
+	private String feels_like; // Temperature. This temperature parameter accounts for the human perception of weather. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	private String pressure; // Atmospheric pressure on the sea level, hPa
+	private String humidity; // Humidity, %
+	private String dew_point; // Atmospheric temperature (varying according to pressure and humidity) below which water droplets begin to condense and dew can form. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
+	private String clouds; // Cloudiness, %
+	private String visibility; // Average visibility, meters
+	private String wind_speed; // Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.How to change units format
+	private String wind_gust; // Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. How to change units format
+	private String wind_deg; // Wind direction, degrees (meteorological)
 	//public String rain; // Precipitation volume, mm
 	//public String snow; // Snow volume, mm
-	public List<Weather> weather; // (more info Weather condition codes)
+	private List<Weather> weather; // (more info Weather condition codes)
+	public String getDt() {
+		return dt;
+	}
+	public void setDt(String dt) {
+		this.dt = dt;
+	}
+	public String getTemp() {
+		return temp;
+	}
+	public void setTemp(String temp) {
+		this.temp = temp;
+	}
+	public String getFeels_like() {
+		return feels_like;
+	}
+	public void setFeels_like(String feels_like) {
+		this.feels_like = feels_like;
+	}
+	public String getPressure() {
+		return pressure;
+	}
+	public void setPressure(String pressure) {
+		this.pressure = pressure;
+	}
+	public String getHumidity() {
+		return humidity;
+	}
+	public void setHumidity(String humidity) {
+		this.humidity = humidity;
+	}
+	public String getDew_point() {
+		return dew_point;
+	}
+	public void setDew_point(String dew_point) {
+		this.dew_point = dew_point;
+	}
+	public String getClouds() {
+		return clouds;
+	}
+	public void setClouds(String clouds) {
+		this.clouds = clouds;
+	}
+	public String getVisibility() {
+		return visibility;
+	}
+	public void setVisibility(String visibility) {
+		this.visibility = visibility;
+	}
+	public String getWind_speed() {
+		return wind_speed;
+	}
+	public void setWind_speed(String wind_speed) {
+		this.wind_speed = wind_speed;
+	}
+	public String getWind_gust() {
+		return wind_gust;
+	}
+	public void setWind_gust(String wind_gust) {
+		this.wind_gust = wind_gust;
+	}
+	public String getWind_deg() {
+		return wind_deg;
+	}
+	public void setWind_deg(String wind_deg) {
+		this.wind_deg = wind_deg;
+	}
+	public List<Weather> getWeather() {
+		return weather;
+	}
+	public void setWeather(List<Weather> weather) {
+		this.weather = weather;
+	}
 
+	
 }
