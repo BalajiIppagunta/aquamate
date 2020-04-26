@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Aqua-Mate</title>
+
+    <link rel="stylesheet" href="css/current.css" />
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Third party plugin CSS-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+      rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"
+    ></script>
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="index.html">Aqua-Mate</a
+        ><button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="index.html#about"
+                >About</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="index.html#services"
+                >Services</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="index.html#contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Masthead-->
+    <div id="currenthead">
+
+      <!--sidebar start-->
+      
+        <!-- sidebar menu end-->
+        
+          <div class="row align-items-center justify-content-center text-center">
+            <div class="col-lg-9 main-chart">
+              <div class="row mt align-items-center justify-content-center text-center">
+                <!-- SERVER STATUS PANELS -->
+                <div class="col-md-8 col-sm-4 mb">
+                  <div class="grey-panel pn ">
+                    <div class="grey-header">
+                      <h5>Planned Activity</h5>
+                    </div>
+
+                    <div class="overall">
+                    <!-- <canvas id="serverstatus01" height="120" width="120"></canvas> -->
+                    <p id="overall"  class="text-left" style="float: left;" ></p>
+                    <i class="far fa-smile-beam fa-4x" style="float: right;"></i>
+                    </div>
+                  </div>
+                  <!-- /grey-panel -->
+                </div>
+            </div>
+              <div class="row mt">
+               
+                <div class="col-md-4 col-sm-4 mb">
+                  <div class="grey-panel pn ">
+                    <div class="grey-header">
+                      <h5>Weather Updates</h5>
+                    </div>
+                    <!-- <canvas id="serverstatus01" height="120" width="120"></canvas> -->
+                        <h2 id="temp"></h2>
+                      
+                  </div>
+                  <!-- /grey-panel -->
+                </div>
+                <!-- /col-md-4-->
+                <div class="col-md-4 col-sm-4 mb">
+                  <div class="darkblue-panel pn">
+                    <div class="darkblue-header">
+                      <h5>DROPBOX STATICS</h5>
+                    </div>
+                    <canvas id="serverstatus02" height="120" width="120"></canvas>
+                    
+                    <p>April 17, 2014</p>
+                    <footer>
+                      <div class="pull-left">
+                        <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+                      </div>
+                      <div class="pull-right">
+                        <h5>60% Used</h5>
+                      </div>
+                    </footer>
+                  </div>
+                  <!--  /darkblue panel -->
+                </div>
+                <div class="col-md-4 col-sm-4 mb">
+                  <!-- REVENUE PANEL -->
+                  <div class="green-panel pn">
+                    <div class="green-header">
+                      <h5>REVENUE</h5>
+                    </div>
+                    <div class="chart mt">
+                      <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
+                    </div>
+                    <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
+                  </div>
+                </div>
+      </div>
+  
+  </div></div>
+
+        <script>
+          var globalar = "";
+          var links = "";
+          //  var arrLinks =[];
+          links = JSON.parse(window.localStorage.getItem("globalar"));
+
+          //var storedData = sessionStorage.getItem("data");
+
+          console.log(links);
+          var plocation = links.location;
+          console.log(plocation);
+          var iconcode = links.weaterResponse.weather[0].icon;
+          console.log(iconcode);
+          var type = links.type;
+          var date = links.date;
+          var iconurl =
+            "http://openweathermap.org/img/w/" +
+            links.weaterResponse.weather[0].icon +
+            ".png";
+          var temp = links.weaterResponse.temp.day;
+          var wind_speed = links.weaterResponse.wind_speed;
+          var overall = links.weaterResponse.weather[0].main;
+          var humidity = links.weaterResponse.humidity;
+          var uvi = links.weaterResponse.uvi;
+          var wind_speed = links.weaterResponse.wind_speed;
+          var feels = links.weaterResponse.feels_like;
+          // document.getElementById("activity").innerText= ;
+          document.getElementById("temp").innerText = Math.round(temp) + "°";
+          // document.getElementById("description").innerText = overall;
+          // document.getElementById("feels").innerText = feels + "°";
+          // document.getElementById("weathers").innerText =
+          //   temp +
+          //   "\nhigh" +
+          //   "\n The wind speed is: " +
+          //   wind_speed +
+          //   "\n The humidity: " +
+          //   humidity +
+          //   "\n The UVI: " +
+          //   uvi +
+          //   "\n The wind speed: " +
+          //   wind_speed;
+          document.getElementById("overall").innerText =
+            "You are planning to do  " +
+            type +
+            " \n Location:  " +
+            plocation +
+            " \n at " +
+            date;
+
+          $("#wicon").attr("src", iconurl);
+        </script>  -->
+      </div>
+    
+  
+    <!-- Footer-->
+    <footer >
+      <div  class="container">
+        <div class="small text-center text-muted">
+          Copyright © 2020 - Start Bootstrap
+        </div>
+      </div>
+    </footer>
+  
+  </body>
+</html>

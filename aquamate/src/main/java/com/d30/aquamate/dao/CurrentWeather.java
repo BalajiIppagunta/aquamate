@@ -20,7 +20,7 @@ public class CurrentWeather {
 	private String wind_speed; // Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. How to change units format
 	private String wind_gust; // Wind gust. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour. How to change units format
 	private String wind_deg; // Wind direction, degrees (meteorological)
-	private String rain; // Precipitation volume, mm
+	//private String rain; // Precipitation volume, mm
 	private String snow; // Snow volume, mm
 	private List<Weather> weather;//  (more info Weather condition codes)
 	
@@ -108,12 +108,12 @@ public class CurrentWeather {
 	public void setWind_deg(String wind_deg) {
 		this.wind_deg = wind_deg;
 	}
-	public String getRain() {
+	/*public String getRain() {
 		return rain;
 	}
 	public void setRain(String rain) {
 		this.rain = rain;
-	}
+	}*/
 	public String getSnow() {
 		return snow;
 	}

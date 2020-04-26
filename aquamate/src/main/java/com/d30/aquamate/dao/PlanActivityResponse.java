@@ -12,7 +12,7 @@ public class PlanActivityResponse {
 	private String lat;
 	private String lng;
 	private String id;
-	private CurrentWeather weaterResponse;
+	private Daily weaterResponse;
 	public String getLocation() {
 		return location;
 	}
@@ -55,10 +55,10 @@ public class PlanActivityResponse {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public CurrentWeather getWeaterResponse() {
+	public Daily getWeaterResponse() {
 		return weaterResponse;
 	}
-	public void setWeaterResponse(CurrentWeather weaterResponse) {
+	public void setWeaterResponse(Daily weaterResponse) {
 		this.weaterResponse = weaterResponse;
 	}
 	
