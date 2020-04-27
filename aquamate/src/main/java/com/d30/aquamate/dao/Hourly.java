@@ -93,6 +93,15 @@ public class Hourly {
 	public void setWeather(List<Weather> weather) {
 		this.weather = weather;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Hourly [dt=" + dt + ", temp=" + temp + ", feels_like=" + feels_like + ", pressure=" + pressure
+				+ ", humidity=" + humidity + ", dew_point=" + dew_point + ", clouds=" + clouds + ", visibility="
+				+ visibility + ", wind_speed=" + wind_speed + ", wind_gust=" + wind_gust + ", wind_deg=" + wind_deg
+				+ ", weather=" + weather + "]";
+	}
 
 	
 }

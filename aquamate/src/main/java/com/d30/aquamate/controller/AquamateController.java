@@ -1,7 +1,10 @@
 package com.d30.aquamate.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
 import com.d30.aquamate.business.AquamateServiceClass;
 import com.d30.aquamate.dao.PlanActivityRequest;
 import com.d30.aquamate.dao.PlanActivityResponse;
@@ -20,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AquamateController {
 	
+	Logger logger = LoggerFactory.getLogger(AquamateController.class);
+	
 	@Value("${weather.api.key}")
 	public String var; 
 	
@@ -33,7 +38,8 @@ public class AquamateController {
 	@ApiOperation(value = "Get weather forecast and current weather", response = WeatherResponse.class)
 	public WeatherResponse consumeWeatherAPI(@RequestParam(value = "lat", defaultValue = "60.99") String lat,
 			@RequestParam(value = "lon", defaultValue = "30.9") String lon) {
-		System.out.println("Service class called");
+		
+		logger.info("consumeWeatherAPI function called");
 		return asc.consumeWeatherAPI(lat,lon);
 	}
 	@CrossOrigin
@@ -41,7 +47,7 @@ public class AquamateController {
 	@ResponseBody
 	@ApiOperation(value = "Get weather data for activity", response = WeatherResponse.class)
 	public PlanActivityResponse planActivityAPI(@RequestBody PlanActivityRequest planActivityRequest) {
-		System.out.println("Service class called");
+		logger.info("planActivityAPI function called");
 		return asc.planActivityService(planActivityRequest);
 	}
 

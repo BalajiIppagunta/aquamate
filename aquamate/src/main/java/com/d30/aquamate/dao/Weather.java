@@ -57,6 +57,13 @@ public class Weather {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Weather [id=" + id + ", main=" + main + ", description=" + description + ", icon=" + icon + "]";
+	}
 	
 	
 

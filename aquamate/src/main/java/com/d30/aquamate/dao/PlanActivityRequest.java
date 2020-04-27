@@ -56,5 +56,12 @@ public class PlanActivityRequest {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "PlanActivityRequest [location=" + location + ", type=" + type + ", date=" + date + ", time=" + time
+				+ ", lat=" + lat + ", lng=" + lng + ", id=" + id + "]";
+	}
+	
+	
 
 }
