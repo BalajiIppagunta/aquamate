@@ -129,6 +129,16 @@ public class Daily {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Daily [dt=" + dt + ", sunrise=" + sunrise + ", sunset=" + sunset + ", temp=" + temp + ", feels_like="
+				+ feels_like + ", pressure=" + pressure + ", humidity=" + humidity + ", dew_point=" + dew_point
+				+ ", wind_speed=" + wind_speed + ", wind_gust=" + wind_gust + ", wind_deg=" + wind_deg + ", clouds="
+				+ clouds + ", uvi=" + uvi + ", visibility=" + visibility + ", rain=" + rain + ", snow=" + snow
+				+ ", weather=" + weather + "]";
+	}
+	
+	
 
 
 }

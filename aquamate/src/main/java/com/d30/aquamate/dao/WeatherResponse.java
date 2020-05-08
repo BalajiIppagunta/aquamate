@@ -54,5 +54,14 @@ public class WeatherResponse {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "WeatherResponse [lat=" + lat + ", lon=" + lon + ", timezone=" + timezone + ", current=" + current
+				+ ", hourly=" + hourly + ", daily=" + daily + "]";
+	}
+	
+	
+	
+	
 	
 }

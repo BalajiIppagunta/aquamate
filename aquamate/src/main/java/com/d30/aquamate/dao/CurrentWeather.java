@@ -126,6 +126,17 @@ public class CurrentWeather {
 	public void setWeather(List<Weather> weather) {
 		this.weather = weather;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CurrentWeather [dt=" + dt + ", sunrise=" + sunrise + ", sunset=" + sunset + ", temp=" + temp
+				+ ", feels_like=" + feels_like + ", pressure=" + pressure + ", humidity=" + humidity + ", dew_point="
+				+ dew_point + ", clouds=" + clouds + ", uvi=" + uvi + ", visibility=" + visibility + ", wind_speed="
+				+ wind_speed + ", wind_gust=" + wind_gust + ", wind_deg=" + wind_deg + ", snow=" + snow + ", weather="
+				+ weather + "]";
+	}
 	
 	
 	
