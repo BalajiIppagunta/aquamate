@@ -62,6 +62,12 @@ public class PlanActivityResponse {
 		this.weaterResponse = weaterResponse;
 	}
 	
+	@Override
+	public String toString() {
+		return "PlanActivityResponse [location=" + location + ", type=" + type + ", date=" + date + ", time=" + time
+				+ ", lat=" + lat + ", lng=" + lng + ", id=" + id + ", weaterResponse=" + weaterResponse + "]";
+	}
+	
 	
 
 }
