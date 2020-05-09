@@ -12,6 +12,22 @@ public class PlanActivityRequest {
 	private String lat;
 	private String lng;
 	private String id;
+	private String userid;
+	
+	
+	
+	/**
+	 * @return the userid
+	 */
+	public String getUserid() {
+		return userid;
+	}
+	/**
+	 * @param userid the userid to set
+	 */
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public String getLocation() {
 		return location;
 	}
@@ -54,12 +70,13 @@ public class PlanActivityRequest {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "PlanActivityRequest [location=" + location + ", type=" + type + ", date=" + date + ", time=" + time
-				+ ", lat=" + lat + ", lng=" + lng + ", id=" + id + "]";
+				+ ", lat=" + lat + ", lng=" + lng + ", id=" + id + ", userid=" + userid + "]";
 	}
 	
 	

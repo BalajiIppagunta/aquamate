@@ -1,20 +1,23 @@
 package com.d30.aquamate.business;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.text.SimpleDateFormat;
-
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.d30.aquamate.dao.Activity;
 import com.d30.aquamate.dao.CurrentWeather;
 import com.d30.aquamate.dao.Daily;
 import com.d30.aquamate.dao.FeelsLike;
@@ -22,13 +25,25 @@ import com.d30.aquamate.dao.Hourly;
 import com.d30.aquamate.dao.PlanActivityRequest;
 import com.d30.aquamate.dao.PlanActivityResponse;
 import com.d30.aquamate.dao.Temp;
+import com.d30.aquamate.dao.User;
 import com.d30.aquamate.dao.WeatherResponse;
+import com.d30.aquamate.repository.ActivityRepository;
+import com.d30.aquamate.repository.UserRepository;
 
 @Service
 
 public class AquamateServiceClass {
 
 	Logger logger = LoggerFactory.getLogger(AquamateServiceClass.class);
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private ActivityRepository activityRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Value("${weather.api.url}")
 	public String weatherAPIUrl;
@@ -54,7 +69,9 @@ public class AquamateServiceClass {
 
 		String url = weatherAPIUrl + "lat=" + lat + "&lon=" + lon + "&units=metric" + "&appid=" + weatherAPIKey;
 		RestTemplate restTemplate = new RestTemplate();
+
 		logger.info("Sending rest request to weather API with: " + url);
+
 		try {
 			ResponseEntity<WeatherResponse> response = restTemplate.getForEntity(url, WeatherResponse.class);
 			logger.info("Got response from weather API");
@@ -71,7 +88,7 @@ public class AquamateServiceClass {
 
 			return responsebody;
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.error("Error "+e);
 			return null;
 		}
 
@@ -80,7 +97,6 @@ public class AquamateServiceClass {
 	public PlanActivityResponse planActivityService(PlanActivityRequest planActivityRequest) {
 
 		logger.info("Processing planActivityService Request with: " + planActivityRequest.toString());
-
 		PlanActivityResponse response = new PlanActivityResponse();
 		response.setDate(planActivityRequest.getDate());
 		response.setLat(planActivityRequest.getLat());
@@ -88,7 +104,6 @@ public class AquamateServiceClass {
 		response.setLocation(planActivityRequest.getLocation());
 		response.setTime(planActivityRequest.getTime());
 		response.setType(planActivityRequest.getType());
-		response.setId(planActivityRequest.getId());
 
 		WeatherResponse weatherResponse = consumeWeatherAPI(planActivityRequest.getLat(), planActivityRequest.getLng());
 
@@ -153,6 +168,7 @@ public class AquamateServiceClass {
 			current.setDt(weatherInResponse.getDt());
 			current.setHumidity(weatherInResponse.getHumidity());
 			current.setPressure(weatherInResponse.getPressure());
+			// current.setRain(weatherInResponse.getRain());
 			current.setSnow(weatherInResponse.getSnow());
 			current.setSunrise(weatherInResponse.getSunrise());
 			current.setSunset(weatherInResponse.getSunset());
@@ -171,12 +187,86 @@ public class AquamateServiceClass {
 			List<Daily> daily = weatherResponse.getDaily().stream()
 					.filter(foo -> foo.getDt().equalsIgnoreCase(planActivityRequest.getDate()))
 					.collect(Collectors.toList());
+			// current.
 			response.setWeaterResponse(daily.get(0));
-			logger.info("Sending resonse back to controller " + response.toString());
+			logger.info("Sending resonse back to controller for later date" + response.toString());
 			return response;
 
 		}
 
 	}
 
+	public String addUser(User userRequest) {
+
+		String generatedString = RandomStringUtils.randomAlphanumeric(16);
+		userRequest.setSecretkey(generatedString);
+		userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+		userRequest.setUserid(userRequest.getUserid().toLowerCase().trim());
+		
+
+		try {
+
+			userRepository.save(userRequest);
+			logger.info("User added succesfully, " + userRequest.toString());
+			return "User added Succesfully";
+
+		} catch (Exception e) {
+			logger.error("Error"+e);
+			return "Unable to add user \n" + e;
+		}
+
+	}
+
+	public User checkUserID(String userid) {
+
+		User userentity = userRepository.findById(userid.toLowerCase().trim()).orElse(null);
+		logger.info("User ID verification is done");
+		return userentity;
+	}
+
+	public Boolean authenticateUser(User user) {
+
+		User userentity = userRepository.findById(user.getUserid().toLowerCase().trim()).orElse(null);
+		boolean authenticationFlag = passwordEncoder.matches(user.getPassword(),userentity.getPassword());
+		logger.info("User Authentication is done");
+		return authenticationFlag;
+	}
+	
+	public String savePlanActivity(PlanActivityRequest planActivityRequest) {
+		
+		
+		Activity activitydao = new Activity();
+		activitydao.setActivityid(planActivityRequest.getId());
+		activitydao.setDate(planActivityRequest.getDate());
+		activitydao.setLat(planActivityRequest.getLat());
+		activitydao.setLng(planActivityRequest.getLng());
+		activitydao.setTime(planActivityRequest.getTime());
+		activitydao.setType(planActivityRequest.getType());
+		activitydao.setLocation(planActivityRequest.getLocation());
+		activitydao.setUserid(planActivityRequest.getUserid());
+		
+		try {
+
+			activityRepository.save(activitydao);
+			logger.info("Activity saved succesfully, " + activitydao.toString());
+			return "Activity saved Succesfully";
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return "Unable to save the activity \n" + e;
+		}
+		
+	}
+	
+	public Activity getPlanActivityByActivityIdandUserId(String activityId,String userid) {
+		
+		return activityRepository.getActivityByActivityIdandUserId(activityId.toLowerCase().trim(), userid.toLowerCase().trim());
+		
+	}
+	
+	public List<Activity>  getPlanActivityByUserId(String userid) {
+		
+		return activityRepository.findByUserID(userid.toLowerCase().trim());
+		
+	}
 }
